@@ -1,12 +1,16 @@
 'use client'
 import React from 'react'
+import CourseSection from './SingleCourseSection1'
+import CourseOverview from './SingleCourseSection2'
 
-function JavaFullStack() {
+function page() {
   return (
-    <div id='java-full-stack'>
-      Java Full Stack
-    </div>
+    <>
+
+    <CourseSection /> 
+    <CourseOverview />
+    </>
   )
 }
 
-export default JavaFullStack
+export default page
