@@ -54,7 +54,7 @@ export const StickyScroll = ({
 
     const scrollInterval = setInterval(() => {
       if (maxScroll > 0) {
-        scrollAmount = (scrollAmount + 2) % (maxScroll + 1); // Loop back to the top
+        scrollAmount = (scrollAmount + 1) % (maxScroll + 1); // Loop back to the top
         container.scrollTo({
           top: scrollAmount,
           behavior: "smooth",
@@ -70,7 +70,7 @@ export const StickyScroll = ({
           }
         });
       }
-    }, 30); // Adjust interval speed here
+    }, 50); // Adjust interval speed here
 
     return () => clearInterval(scrollInterval); // Cleanup on unmount
   }, []);
