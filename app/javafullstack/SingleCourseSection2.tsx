@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const CourseOverview = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -25,7 +26,7 @@ const CourseOverview = () => {
           </h3>
           <ul className="list-disc pl-6 p-4">
             <li>
-              <span className="font-semibold text-gray-900">Comprehensive Learning:</span> From HTML and CSS to advanced Spring Boot and Hibernate, we’ve got you covered
+              <span className="font-semibold text-gray-900">Comprehensive Learning:</span> From HTML and CSS to advanced Spring Boot and Hibernate, we&apos;ve got you covered
             </li>
             <li>
               <span className="font-semibold text-gray-900">Hands-On Projects:</span> Gain real-world experience with projects that mimic industry scenarios.
@@ -44,12 +45,12 @@ const CourseOverview = () => {
         <div>
           <div className="shadow-md p-6 rounded-lg h-96">
             <h3 className="text-xl font-bold mb-4 text-center flex bg-orange-300 p-2 rounded-xl">
-              <span><img src="/assets/java.png" className="w-8" /></span>
+              <span><Image width={0} height={0} alt={''} src="/assets/java.png" className="w-8" /></span>
               <span className="ml-auto">Features of the Course</span>
             </h3>
 
             <div>
-              <h2 className="text-xl tracking-wide text-gray-800 font-semibold">✨ What You'll Get:</h2>
+              <h2 className="text-xl tracking-wide text-gray-800 font-semibold">✨ What You&apos;ll Get:</h2>
               <ul className="ml-10 mt-6">
                 <li className="text-lg transition-all duration-300 bg-white hover:bg-blue-100 hover:scale-105 hover:shadow-lg p-2 rounded">150+ hours of immersive video lectures</li>
                 <li className="text-lg transition-all duration-300 bg-white hover:bg-blue-100 hover:scale-105 hover:shadow-lg p-2 rounded">Live coding sessions</li>

@@ -1,164 +1,114 @@
 "use client";
-import React from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  MotionValue,
-} from "framer-motion";
+import React, { useState } from "react";
+import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
-
-// export const HeroParallax = ({
-//   products,
-// }: {
-//   products: {
-//     title: string;
-//     link: string;
-//     thumbnail: string;
-//   }[];
-// }) => {
-//   const firstRow = products.slice(0, 3);
-//   const secondRow = products.slice(3,6);
-//   const thirdRow = products.slice(6, 9);
-//   const ref = React.useRef(null);
-//   const { scrollYProgress } = useScroll({
-//     target: ref,
-//     offset: ["start start", "end start"],
-//   });
-
-//   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-//   const translateX = useSpring(
-//     useTransform(scrollYProgress, [0, 1], [0, 1000]),
-//     springConfig
-//   );
-//   const translateXReverse = useSpring(
-//     useTransform(scrollYProgress, [0, 1], [0, -1000]),
-//     springConfig
-//   );
-//   const rotateX = useSpring(
-//     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-//     springConfig
-//   );
-//   const opacity = useSpring(
-//     useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-//     springConfig
-//   );
-//   const rotateZ = useSpring(
-//     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-//     springConfig
-//   );
-//   const translateY = useSpring(
-//     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-//     springConfig
-//   );
-//   return (
-//     <div
-//       ref={ref}
-//       className=" py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-//     >
-//       <Header />
-//       <motion.div
-//         style={{
-//           rotateX,
-//           rotateZ,
-//           translateY,
-//           opacity,
-//         }}
-//         className=""
-//       >
-//         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-//           {firstRow.map((product) => (
-//             <ProductCard
-//               product={product}
-//               translate={translateX}
-//               key={product.title}
-//             />
-//           ))}
-//         </motion.div>
-//         <motion.div className="flex flex-row  mb-20 space-x-20 ">
-//           {secondRow.map((product) => (
-//             <ProductCard
-//               product={product}
-//               translate={translateXReverse}
-//               key={product.title}
-//             />
-//           ))}
-//         </motion.div>
-//         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-//           {thirdRow.map((product) => (
-//             <ProductCard
-//               product={product}
-//               translate={translateX}
-//               key={product.title}
-//             />
-//           ))}
-//         </motion.div>
-//       </motion.div>
-//     </div>
-//   );
-// };
 
 export const Header = () => {
+  const [inputText, setInputText] = useState(""); // Input from the user
+  const [response, setResponse] = useState(""); // Response from the backend
+  const [loading, setLoading] = useState(false); // Loading state
+  const [isChatOpen, setIsChatOpen] = useState(false); // Chat widget visibility
+
+  
+
+  // Function to get response from the backend
+  const getOpenAIResponse = async () => {
+    if (!inputText) {
+      alert("Please enter a query!");
+      return;
+    }
+
+    setLoading(true);
+    setResponse(""); // Clear previous response
+
+    try {
+      const res = await axios.post("https://fastapi-3exb.onrender.com/essay/invoke/invoke", {
+        input: { topic: inputText }
+      });
+      // Extract content from the response
+      setResponse(res.data.output.content);
+
+    }
+    catch (error) {
+      console.error("Error fetching response:", error);
+      setResponse("Failed to fetch response from the server.");
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0 bg-sky-50">
-      <h1 className="text-2xl md:text-7xl font-bold bg-gradient-to-r from-purple-700 via-blue-600 to-green-500 bg-clip-text text-transparent animate-fadeIn">
-        Unlock Your Coding Potential. <br /> Linking To The Corporate World
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-gray-950">
-        Unleash your coding potential with Linkcode. Decode the digital world and build the future.
-      </p>
+    <>
+      <div>
+        <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 left-0 top-0 bg-sky-50">
+          
+          <h1 className="text-2xl md:text-7xl font-bold bg-gradient-to-r from-purple-700 via-blue-600 to-green-500 bg-clip-text text-transparent animate-fadeIn pl-4">
+            Unlock Your Coding Potential. <br /> Linking To The Corporate World
+          </h1>
+          <p className="max-w-2xl text-base md:text-xl mt-8 text-gray-950 pl-4">
+            Unleash your coding potential with Linkcode. Decode the digital world and build the future.
+          </p>
 
-      <button className="px-8 py-2 rounded-full bg-gradient-to-b from-blue-500 to-blue-600 text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200 mt-10">
-        Get Started
-      </button>
+          <button className="px-8 py-2 rounded-full bg-gradient-to-b from-blue-500 to-blue-600 text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200 mt-10 ml-4">
+            Get Started
+          </button>
+        </div>
 
-    </div>
+        {/* Floating Chat Icon */}
+        {!isChatOpen && (
+          <div className="fixed bottom-5 right-5 bg-blue-600 text-white rounded-full flex items-center justify-center px-4 py-2 shadow-lg cursor-pointer transform transition-transform hover:scale-110 hover:bg-blue-700 z-20" onClick={() => setIsChatOpen(true)}>
+            <span className="text-xl mr-2"><Image width={0} height={0} src="/assets/chatbot.png" alt="chatbot" className="w-10" /></span>
+            {/* <span className="text-sm">Chat with Assistant</span> */}
+          </div>
+        )}
+
+        {/* Chat Widget */}
+        {isChatOpen && (
+          <div className="fixed bottom-5 right-5 w-80  bg-sky-50 rounded-lg shadow-lg z-20 border border-green-300">
+            <div className="flex justify-between items-center bg-sky-100 px-4 py-2 rounded-t-lg">
+              <h2 className=" text-lg tracking-tight font-bold"><Image width={0} height={0} src="/assets/chatbot.png" alt="chatbot" className="w-10" /></h2>
+              <button className="text-gray-500 text-xl" onClick={() => setIsChatOpen(false)}>
+                ✖
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-3 px-4 py-3">
+              {loading &&
+                (
+                  <>
+                    <p className="p-3 bg-green-100 rounded-md text-blue-600 text-sm w-4/5">{inputText}</p>
+                    <p className="text-gray-400 italic">Thinking...</p>
+                  </>
+                )
+              }
+              {response && (
+                <div>
+                  <p className="p-3 bg-green-100 rounded-md text-blue-600 text-sm w-4/5 ml-auto">{inputText}</p>
+                  <Image width={0} height={0} src="/assets/chatbot.png" alt="chatbot" className="w-8" />
+                  <div className="p-3 bg-green-100 rounded-md">
+                    {/* <h3 className="text-blue-700 mb-1">Response:</h3> */}
+                    <p className="text-blue-700 text-sm w-4/5 mr-auto">{response}</p>
+                  </div>
+                </div>
+              )}
+              <div className="flex flex-row">
+                <input
+                  type="text"
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder="Ask me anything..."
+                  className="p-2 rounded-md border bg-green-50 text-blue-700 text-sm w-96"
+                />
+                <button className="p-2 text-white rounded-md" onClick={getOpenAIResponse}>
+                  <Image width={0} height={0} src="/assets/send.png" alt="send-icon" className="w-8 hover:bg-sky-100 hover:p-0.5 hover:rounded-lg" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
-// export const ProductCard = ({
-//   product,
-//   translate,
-// }: {
-//   product: {
-//     title: string;
-//     link: string;
-//     thumbnail: string;
-//   };
-//   translate: MotionValue<number>;
-// }) => {
-//   return (
-//     <div className="-mt-20">
-//       <motion.div
-//         style={{
-//           x: translate,
-//         }}
-//         whileHover={{
-//           y: -20,
-//         }}
-//         key={product.title}
-//         className="group/product relative flex-shrink-0 mt-4 w-full md:w-[50rem] h-96" // Responsive width and fixed height
-//       >
-//         <Link
-//           href={product.link}
-//           className="block group-hover/product:shadow-2xl "
-//         >
-//           <Image
-//             src={product.thumbnail}
-//             height={400} // Height adjusted for better responsiveness
-//             width={1600} // Increased width for full-screen width on large screens
-//             className="h-full w-full object-cover object-center absolute inset-0" // Ensure image covers container
-//             alt={product.title}
-//           />
-//         </Link>
-//         <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none hidden"></div>
-//         <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-//           {product.title}
-//         </h2>
-//       </motion.div>
-//     </div>
-//   );
-// };

@@ -136,7 +136,7 @@ const Signin = () => {
                                     </div>
 
                                     <div className="mt-4 flex justify-center">
-                                        <p className='pr-2 mt-1.5 text-gray-700'>Don't have an Account ?</p>
+                                        <p className='pr-2 mt-1.5 text-gray-700'>Don&apos;t have an Account ?</p>
                                         <button
                                             type="button"
                                             className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

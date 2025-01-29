@@ -96,6 +96,8 @@ export const theme: Config['theme'] = {
       fadeIn: 'fadeIn 2s ease-in-out',
       spin: 'spin 2s linear infinite',
       fadeinup: 'fade-in-up 2s ease-in-out 0.25s 1',
+      scroll:
+        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
     },
     keyframes: {
       fadeIn: {
@@ -110,6 +112,11 @@ export const theme: Config['theme'] = {
         "100%": {
           opacity: "1",
           transform: "translate3d(0, 0, 0)",
+        },
+      },
+      scroll: {
+        to: {
+          transform: "translate(calc(-50% - 0.5rem))",
         },
       },
     },

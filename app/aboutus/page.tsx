@@ -5,6 +5,7 @@ import StatsSection from './count'
 import { TracingBeam } from '../components/ui/tracing-beam'
 import { TextGenerateEffect } from '../components/ui/text-generate-effect'
 import Checklist from './CheckList'
+import Image from 'next/image'
 
 function AboutUs() {
   const fadeUp = {
@@ -78,7 +79,8 @@ function AboutUs() {
           <div className='flex flex-wrap gap-2'>
             <div className='border w-1/3 ml-14'>
               <a href="#" className="group relative block bg-black">
-                <img
+                <Image
+                width={0} height={0}
                   alt=""
                   src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
                   className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
@@ -110,7 +112,7 @@ function AboutUs() {
       </TracingBeam>
       <div className='border mt-10 w-full h-auto bg-green-700 flex flex-col md:flex-row md:h-40'>
         <div className='flex justify-center items-center'>
-          <img src="/assets/newsletter/star-medal.png" alt="" className='w-20 mt-4 md:mt-10 lg:ml-36 ml-10' />
+          <Image width={300} height={300} src="/assets/newsletter/star-medal.png" alt='' className='w-20 mt-4 md:mt-10 lg:ml-36 ml-10' />
         </div>
         <div className='flex flex-col justify-center items-center text-center md:text-left md:w-1/2 p-4'>
           <h1 className='text-white text-lg lg:text-5xl mt-4 md:mt-12 font-semibold tracking-wide'>New Student Join Every Week</h1>

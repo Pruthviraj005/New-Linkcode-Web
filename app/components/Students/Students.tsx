@@ -1,7 +1,7 @@
 "use client"
 import Slider from "react-slick";
 import React, { Component } from "react";
-import { Carousel, CarouselContent } from "../ui/carousel";
+import Image from "next/image";
 
 // CAROUSEL DATA
 
@@ -103,12 +103,12 @@ export default class MultipleItems extends Component {
                             <div key={i}>
                                 <div className='bg-gray-50 m-4 pt-8 px-12 pb-10 text-center rounded-lg border shadow-sm hover:shadow-lg'>
                                     <div className='relative'>
-                                        <img src={items.imgSrc} alt="gaby" className="inline-block h-16 w-16 m-auto rounded-full ring-2 ring-white" />
-                                        <img src={'/assets/students/greenpic.svg'} alt="greenbg" className=" absolute inline-block h-6 w-6 position-green" />
+                                        <Image src={items.imgSrc} alt="gaby" className="inline-block h-16 w-16 m-auto rounded-full ring-2 ring-white" width={100} height={0} />
+                                        <Image width={0} height={0} src={'/assets/students/greenpic.svg'} alt="greenbg" className=" absolute inline-block h-6 w-6 position-green" />
                                     </div>
                                     <h3 className='text-sm pt-4 pb-2'>{items.profession}</h3>
                                     <h4 className='text-2xl font-semibold pb-3'>{items.name}</h4>
-                                    <img src={items.starimg} alt="stars-img" className='m-auto pb-6' />
+                                    <Image width={0} height={0} src={items.starimg} alt="stars-img" className='m-auto pb-6' />
                                     <p className='font-medium leading-9 justify-center text-center text-gray-600 tracking-wide'>{items.detail}</p>
                                 </div>
                             </div>

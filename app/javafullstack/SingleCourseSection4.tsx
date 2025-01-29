@@ -9,10 +9,11 @@ function CourseLastSection() {
           💼 Unlock Exciting Career Opportunities!
         </h2>
         <p className='pl-16 text-base text-gray-800'>Become a highly sought-after Java Full Stack Developer and open doors to lucrative career opportunities in the tech industry. Popular job roles include:</p>
-        <ul className='border'>
+        <ul className='border pl-20'>
           <li>Full Stack Developer</li>
           <li>Software Engineer</li>
           <li>Backend Developer</li>
+          <li>Frontend Developer</li>
         </ul>
       </div>
       <div className='border w-1/2'>

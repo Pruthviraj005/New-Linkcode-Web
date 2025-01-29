@@ -47,10 +47,14 @@ export const StickyScroll = ({
     // Store the offset positions of the cards
     const cardOffsets = Array.from(
       container.querySelectorAll(".content-card")
-    ).map((card: HTMLElement) => ({
-      offsetTop: card.offsetTop,
-      height: card.offsetHeight,
-    }));
+    ).map((card) => {
+      const htmlCard = card as HTMLElement; // Casting to HTMLElement
+      return {
+        offsetTop: htmlCard.offsetTop,
+        height: htmlCard.offsetHeight,
+      };
+    });
+
 
     const scrollInterval = setInterval(() => {
       if (maxScroll > 0) {
@@ -88,20 +92,18 @@ export const StickyScroll = ({
           {content.map((item, index) => (
             <div
               key={item.title + index}
-              className={`my-20 content-card transition-all duration-500 ${
-                activeCard === index
+              className={`my-20 content-card transition-all duration-500 ${activeCard === index
                   ? "bg-blue-100 text-blue-900 p-6 rounded-lg shadow-md"
                   : "text-gray-700"
-              }`}
+                }`}
             >
               <motion.h2
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className={`text-2xl font-bold ${
-                  activeCard === index ? "text-3xl font-extrabold" : ""
-                }`}
+                className={`text-2xl font-bold ${activeCard === index ? "text-3xl font-extrabold" : ""
+                  }`}
               >
                 {item.title}
               </motion.h2>

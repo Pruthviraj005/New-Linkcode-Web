@@ -1,10 +1,11 @@
+import Image from 'next/image';
 import React from 'react';
 
 const features = [
   {
     icon: (
       <div className="h-full w-full flex flex-col items-center justify-center text-center text-white">
-        <img src="/assets/why/lms-icon1.png" />
+        <Image width={0} height={0} alt='' src="/assets/why/lms-icon1.png" />
       </div>
     ),// Replace this with an actual icon (or SVG)
 
@@ -12,7 +13,7 @@ const features = [
   {
     icon: (
       <div className="h-full w-full flex flex-col items-center justify-center text-center text-white">
-        <img src="/assets/why/lms-icon2.png" />
+        <Image width={0} height={0} alt='' src="/assets/why/lms-icon2.png" />
       </div>
     ),
 
@@ -20,7 +21,7 @@ const features = [
   {
     icon: (
       <div className="h-full w-full flex flex-col items-center justify-center text-center text-white">
-        <img src="/assets/why/lms-icon3.png" />
+        <Image width={0} height={0} alt='' src="/assets/why/lms-icon3.png" />
       </div>
     ),
 
@@ -28,7 +29,7 @@ const features = [
   {
     icon: (
       <div className="h-full w-full flex flex-col items-center justify-center text-center text-white">
-        <img src="/assets/why/lms-icon4.png" />
+        <Image width={0} height={0} alt='' src="/assets/why/lms-icon4.png" />
       </div>
     ),
 

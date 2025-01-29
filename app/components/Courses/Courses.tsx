@@ -3,6 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 import { GlobeAltIcon, DevicePhoneMobileIcon, CircleStackIcon, CloudIcon } from '@heroicons/react/24/outline';
 import { Button } from "../ui/moving-border";
+import Image from "next/image";
 
 
 interface Name {
@@ -155,10 +156,12 @@ const NamesList = () => {
         <div key={index}>
             <div className=" text-lg sm:text-sm py-5 lg:py-0 hover:shadow-lg">
                 <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                    <img
+                    <Image
                         src={name.imageSrc}
                         alt={name.imageSrc}
                         className="h-full w-full object-cover object-center"
+                        width={0}
+                        height={0}
                     />
                 </div>
                 <div className='flex justify-between'>
@@ -177,11 +180,11 @@ const NamesList = () => {
                     <p>12 Classes</p>
                     <div className='flex flex-row space-x-4'>
                         <div className='flex'>
-                            <img src={'/assets/courses/account.svg'} alt="circle" />
+                            <Image width={0} height={0} src={'/assets/courses/account.svg'} alt="circle" />
                             <p className='text-lightgrey ml-1'>120</p>
                         </div>
                         <div className='flex'>
-                            <img src={'/assets/courses/Star.svg'} alt="star" />
+                            <Image width={0} height={0} src={'/assets/courses/Star.svg'} alt="star" />
                             <p className='ml-1'>4.5</p>
                         </div>
                     </div>

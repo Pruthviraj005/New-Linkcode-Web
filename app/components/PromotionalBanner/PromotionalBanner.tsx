@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface ImageSliderProps {
@@ -43,7 +44,8 @@ const PromotionalBanner: React.FC<ImageSliderProps> = ({ images }) => {
 
       {/* Image */}
       <div className="w-[1200px] h-[500px] border ml-5 shadow-2xl transition-transform duration-200 ease-out">
-        <img
+        <Image
+          width={0} height={0}
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
           className=" w-[1200px] h-[500px] rounded-lg shadow-lg"

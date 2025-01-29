@@ -7,6 +7,7 @@ import Drawerdata from "./Drawerdata";
 import Signdialog from "./Signdialog";
 import Registerdialog from "./Registerdialog";
 import Contactus from "./Contactus";
+import Image from 'next/image';
 
 
 interface NavigationItem {
@@ -41,15 +42,17 @@ const Navbar = () => {
                             {/* LOGO */}
 
                             <div className="flex flex-shrink-0 items-center">
-                                <img
+                                <Image
                                     className="block h-30px w-40 lg:hidden"
-                                    src="https://www.linkcode.in/_next/image?url=%2Flogo.png&w=256&q=75"
+                                    src={"https://www.linkcode.in/_next/image?url=%2Flogo.png&w=256&q=75"}
                                     alt="Courses-Logo"
+                                    width={200} height={10}
                                 />
-                                <img
+                                <Image
                                     className="hidden h-48px w-40 lg:block"
-                                    src="https://www.linkcode.in/_next/image?url=%2Flogo.png&w=256&q=75"
+                                    src={"https://www.linkcode.in/_next/image?url=%2Flogo.png&w=256&q=75"}
                                     alt="Courses-Logo"
+                                    width={200} height={10}
                                 />
                             </div>
 
@@ -74,19 +77,46 @@ const Navbar = () => {
                                             className='hover:text-green-700 px-3 py-4 text-15px font-medium space-links'>
                                             Courses
                                         </Link>
-                                        <div className="absolute left-0 hidden mt-2 ml-96 bg-white text-black rounded shadow-lg w-56 group-hover:block z-20 text-center">
-                                            <Link href="/javafullstack" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">Java Full-Stack Development</Link>
-                                            <a href="#development" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">Python Full-Stack Development</a>
-                                            <a href="#seo" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">MEAN/MERN Stack Development</a>
-                                            <a href="#seo" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">Mobile App Development</a>
-                                            <a href="#seo" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">Data Analytics</a>
-                                            <a href="#seo" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">Data Science</a>
-                                            <a href="#seo" className="block px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800">DevOps With AWS</a>
+                                        <div className="absolute left-0 hidden mt-2 ml-96 bg-white text-black rounded shadow-lg w-56 group-hover:block z-20 ">
+                                            <Link href="/javafullstack" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} src="/assets/java.png" className='w-8' alt={''} />
+                                                <p className='mt-2 ml-2'>Java Full-Stack</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt={''} src="/assets/python.png" className='w-6' />
+                                                <p className='mt-2 ml-4'>Python Full-Stack</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt={''} src="/assets/web-development.png" className='w-6 h-6' />
+                                                <p className='mt-2 ml-4'>MEAN / MERN Stack</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt='' src="/assets/mobile-app.png" className='w-6 h-7 mt-1' />
+                                                <p className=' ml-4'>Mobile App Development</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt='' src="/assets/statistics.png" className='w-6' />
+                                                <p className='mt-2 ml-4'>Data Analytics</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt='' src="/assets/data-science.png" className='w-6' />
+                                                <p className='mt-2 ml-4'>Data Science</p>
+                                            </Link>
+                                            <hr />
+                                            <Link href="#" className=" px-4 py-2 hover:bg-gray-100 rounded text-sm text-gray-800 flex tracking-wide">
+                                                <Image width={100} height={0} alt='' src="/assets/devops.png" className='w-6' />
+                                                <p className='mt-2 ml-4'>DevOps With AWS</p>
+                                            </Link>
                                         </div>
 
                                     </div>
                                     <Link
-                                        href="/"
+                                        href="/blogs"
                                         className='hover:text-green-700 px-3 py-4 text-15px font-medium space-links'>
                                         Blogs
                                     </Link>

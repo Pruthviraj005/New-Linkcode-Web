@@ -1,6 +1,7 @@
 "use client"
 import React, { ReactNode } from "react";
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import Image from "next/image";
 
 interface DrawerProps {
     children: ReactNode;
@@ -27,7 +28,10 @@ const Drawer = ({ children, isOpen, setIsOpen }: DrawerProps) => {
     >
  
                 <article className="relative w-340px max-w-lg pb-10 flex flex-col space-y-6 h-full">
-                    <header className="p-4 flex items-center"><img
+                    <header className="p-4 flex items-center">
+                        <Image
+                        width={0}
+                        height={0}
                         className=" w-44 mx-auto mt-2"
                         src="https://www.linkcode.in/_next/image?url=%2Flogo.png&w=256&q=75"
                         alt="Courses-Logo"

@@ -4,7 +4,7 @@ const CourseContent = () => {
   return (
     <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold mb-6">Modules to be Covered</h2>
-      <h3 className='text-2xl font-bold mb-6'>📖 What You'll Learn</h3>
+      <h3 className='text-2xl font-bold mb-6'>📖 What You&apos;ll Learn</h3>
       <div>
         <div className="bg-green-400 rounded-md p-1 pl-4">
           <h3 className="text-xl font-bold text-white">Module 1</h3>
